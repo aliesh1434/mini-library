@@ -18,11 +18,6 @@ let books = [
         title: "Node Basics",
         author: "Aliesh"
     },
-    {
-        id: 2,
-        title: "Backend Development",
-        author: "Aliesh Patel"
-    }
 ];
 
 // routes
@@ -69,19 +64,6 @@ app.put("/books/:id", (req, res) => {
     book.author = req.body.author || book.author;
 
     res.json(book);
-});
-
-
-//delete operation
-app.delete("/books/:id", (req, res) => {
-    const index = books.findIndex(b => b.id == req.params.id);
-
-    if (index === -1) {
-        return res.status(404).json({ message: "Book not found" });
-    }
-
-    books.splice(index, 1);
-    res.json({ message: "Book deleted successfully" });
 });
 
 //search route
